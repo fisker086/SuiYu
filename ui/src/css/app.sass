@@ -1,0 +1,691 @@
+body
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif
+
+// 仅禁止横向溢出；纵向交给视口滚动，否则长页（如仪表盘）在 html overflow:hidden 下无法滚动
+html
+  overflow-x: hidden
+
+div::-webkit-scrollbar
+  width: 5px
+  height: 5px
+
+div::-webkit-scrollbar-track
+  background: #33333326
+  border-radius: 2px
+
+div::-webkit-scrollbar-thumb
+  background: #3333331a
+  border-radius: 10px
+
+div::-webkit-scrollbar-thumb:hover
+  background: #33333333
+
+.text-text2
+  color: #3F3F46 !important
+
+.text-text3
+  color: #70707B !important
+
+.radius-xs
+  border-radius: 4px
+
+.radius-sm
+  border-radius: 6px
+
+.radius-md
+  border-radius: 8px
+
+.f12
+  font-size: 12px
+
+.f14
+  font-size: 14px
+
+.f16
+  font-size: 16px
+
+.f18
+  font-size: 18px
+
+.f20
+  font-size: 20px
+
+.q-btn .q-icon
+  font-size: 20px !important
+
+.login-page,
+.register-page,
+.auth-shell
+  .login-btn
+    color: #ffffff
+    background: var(--q-primary)
+    padding: 11px 48px
+    font-size: 16px
+    border-radius: 8px
+    span
+      font-weight: 500
+
+// 仪表盘活动趋势：折线图
+.dashboard-activity-line
+  width: 100%
+
+.dashboard-activity-svg
+  width: 100%
+  height: 260px
+  display: block
+  vertical-align: middle
+
+.dashboard-activity-labels
+  margin-top: 8px
+
+// 仪表盘「最近会话」：固定高度，列表内部滚动；整页纵向由视口滚动（见 html overflow-x）
+.dashboard-recent-scroll
+  height: 320px
+
+.chat-page
+  overflow: hidden
+  .msg-user
+    background: #e3f2fd
+  .msg-assistant
+    background: #f5f5f5
+
+.chat-page-layout
+  display: flex
+  flex-direction: column
+  height: 100%
+  max-height: 100%
+  min-height: 0
+  overflow: hidden
+  box-sizing: border-box
+  background: #fafafa
+
+.chat-main-body
+  flex: 1 1 0
+  min-height: 0
+  min-width: 0
+  overflow: hidden
+
+.chat-main-right
+  flex: 1 1 0
+  min-width: 0
+  min-height: 0
+  position: relative
+
+// 消息滚动区 + 待发送预览（固定带）+ 输入框：纵向 flex，预览不参与滚动、始终在输入框正上方
+.chat-main-center
+  flex: 1 1 0
+  min-width: 0
+  min-height: 0
+  overflow: hidden
+  display: flex !important
+  flex-direction: column
+  align-items: stretch
+
+.chat-main-center > .chat-scroll-area
+  flex: 1 1 0
+  min-height: 0 !important
+  max-height: none
+  overflow-x: hidden
+  overflow-y: auto
+  height: auto
+
+// 待发送条：独立一层，不塞进滚动区，避免被欢迎页/长列表顶出视口
+.chat-main-center > .chat-pending-strip
+  flex: 0 0 auto
+  width: 100%
+  min-height: 0
+  max-height: min(42vh, 360px)
+  overflow-x: hidden
+  overflow-y: auto
+  box-sizing: border-box
+  z-index: 1
+
+.chat-main-center > .chat-composer
+  flex: 0 0 auto
+  align-self: stretch
+  z-index: 2
+
+.chat-session-rail
+  flex: 0 0 276px
+  width: 276px
+  max-width: 276px
+  min-width: 0
+  overflow-x: hidden
+  box-sizing: border-box
+  background: #fff
+  border-right: 1px solid rgba(0, 0, 0, 0.08)
+
+.chat-session-rail-scroll
+  min-height: 0
+  width: 100%
+  max-width: 100%
+  // 避免长字符串撑出横向滚动、把整个侧栏 min-content 顶宽（flex 子项默认 min-width:auto）
+  .q-scrollarea__content
+    max-width: 100%
+    overflow-x: hidden
+    box-sizing: border-box
+
+.chat-session-grouped-list
+  padding: 6px 10px 14px !important
+  width: 100%
+  max-width: 100%
+  min-width: 0
+  box-sizing: border-box
+
+.chat-session-group-label
+  font-weight: 600
+  letter-spacing: 0.02em
+  padding: 12px 6px 8px !important
+  line-height: 1.3
+
+.chat-session-group-label--first
+  padding-top: 4px !important
+
+.chat-session-grouped-list .q-item
+  min-height: auto !important
+  padding: 10px 12px !important
+  border-radius: 10px
+  margin-bottom: 6px
+  &:last-child
+    margin-bottom: 0
+
+.chat-session-grouped-list .q-item .q-item__section--main > .q-item__label:not(.q-item__label--caption)
+  line-height: 1.35
+  margin-bottom: 2px
+  margin-top: 2px
+
+.chat-session-grouped-list .q-item .q-item__label--caption
+  line-height: 1.25
+  opacity: 0.85
+
+.chat-session-grouped-list .q-menu .q-item
+  padding: 8px 12px !important
+  align-items: center !important
+
+.chat-session-grouped-list .q-menu .q-item .q-icon
+  flex-shrink: 0
+
+.chat-session-grouped-list .q-menu .q-item-label
+  line-height: 1.4
+
+.chat-session-item-active
+  background: rgba(25, 118, 210, 0.12) !important
+  color: #1565c0 !important
+
+.min-width-0
+  min-width: 0
+
+.chat-session-row-actions
+  flex-shrink: 0
+
+// 长标题截断：避免主列撑开把右侧改名/删除顶出可视区（勿依赖横向滚动）
+.chat-session-grouped-list .chat-session-row
+  width: 100%
+  min-width: 0
+  max-width: 100%
+  overflow: hidden
+  box-sizing: border-box
+
+.chat-session-grouped-list .chat-session-row > .q-item__section--main
+  flex: 1 1 0%
+  min-width: 0 !important
+  overflow: hidden
+
+.chat-session-grouped-list .chat-session-row > .q-item__section--main .q-item__label
+  min-width: 0
+
+.chat-session-grouped-list .chat-session-row .q-item__label.ellipsis
+  display: block
+  max-width: 100%
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.chat-session-dialog-card
+  width: min(300px, 88vw)
+
+.chat-toolbar
+  flex-shrink: 0
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+  background: #fff
+  gap: 8px
+
+.chat-toolbar-select
+  min-width: 200px
+  max-width: 320px
+
+.chat-scroll-area
+  min-height: 0
+  overflow-x: hidden
+  overflow-y: auto
+  background: #f5f5f7
+
+.chat-pending-strip
+  width: 100%
+  box-sizing: border-box
+  background: #eef2f6
+  border-top: 1px solid rgba(0, 0, 0, 0.08)
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+
+.body--dark .chat-pending-strip
+  background: rgba(28, 28, 32, 0.98)
+  border-top-color: rgba(255, 255, 255, 0.1)
+  border-bottom-color: rgba(255, 255, 255, 0.08)
+
+.chat-welcome
+  min-height: 100%
+  padding: 32px 24px 48px
+
+.chat-welcome-icon
+  width: 80px
+  height: 80px
+  border-radius: 24px
+  background: #fff
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08)
+
+.chat-welcome-sub
+  max-width: 420px
+  line-height: 1.6
+
+.chat-quick-grid
+  width: 100%
+  max-width: 560px
+
+.chat-quick-card
+  border-radius: 12px !important
+  transition: box-shadow 0.2s ease
+  &:hover
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08)
+
+.chat-messages
+  width: 100%
+  max-width: none
+  margin: 0
+  box-sizing: border-box
+
+.chat-message-row
+  width: 100%
+  min-width: 0
+
+.chat-msg-time
+  font-size: 12px
+  opacity: 0.75
+  line-height: 1.3
+  font-variant-numeric: tabular-nums
+
+.chat-date-divider
+  font-size: 12px
+  opacity: 0.65
+  padding: 4px 12px
+  border-radius: 999px
+  background: rgba(0, 0, 0, 0.04)
+
+.body--dark .chat-date-divider
+  background: rgba(255, 255, 255, 0.06)
+
+// 外层列宽：助手略窄于用户（主阅读区）
+.chat-bubble-column
+  min-width: 0
+  flex-shrink: 1
+
+.chat-bubble-column-user
+  max-width: min(94%, 760px)
+
+.chat-bubble-column-assistant
+  max-width: min(88%, 560px)
+
+.chat-bubble
+  flex: 0 1 auto
+  box-sizing: border-box
+  width: 100%
+  max-width: 100%
+  padding: 12px 16px
+  border-radius: 12px
+  text-align: left
+
+.chat-bubble-user
+  margin-left: auto
+  margin-right: 0
+  background: #e3f2fd
+  border: 1px solid rgba(25, 118, 210, 0.15)
+
+.chat-bubble-assistant
+  margin-left: 0
+  margin-right: auto
+  background: #fff
+  border: 1px solid rgba(0, 0, 0, 0.06)
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04)
+
+.body--dark .chat-bubble-assistant
+  background: rgba(255, 255, 255, 0.06)
+  border-color: rgba(255, 255, 255, 0.12)
+  box-shadow: none
+
+.chat-bubble-body
+  white-space: pre-wrap
+  word-break: break-word
+
+// 等待首 token：三点跳动（避免空白气泡）
+.chat-typing
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  min-height: 1.5em
+  padding: 4px 0
+
+.chat-typing-dot
+  width: 6px
+  height: 6px
+  border-radius: 50%
+  background: rgba(25, 118, 210, 0.55)
+  animation: chat-typing-bounce 1.2s ease-in-out infinite
+  &:nth-child(2)
+    animation-delay: 0.15s
+  &:nth-child(3)
+    animation-delay: 0.3s
+
+@keyframes chat-typing-bounce
+  0%, 70%, 100%
+    opacity: 0.35
+    transform: translateY(0)
+  35%
+    opacity: 1
+    transform: translateY(-4px)
+
+.body--dark .chat-typing-dot
+  background: rgba(100, 181, 246, 0.65)
+
+// Assistant replies: Markdown → HTML (see renderChatMarkdown)
+.chat-md-root
+  white-space: normal
+  word-break: break-word
+  line-height: 1.5
+  p
+    margin: 0 0 0.5em
+    &:last-child
+      margin-bottom: 0
+  ul, ol
+    margin: 0.35em 0 0.6em
+    padding-left: 1.35em
+  li
+    margin: 0.2em 0
+  strong
+    font-weight: 600
+  code
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace
+    font-size: 0.9em
+    background: rgba(0, 0, 0, 0.06)
+    padding: 0.1em 0.35em
+    border-radius: 4px
+  pre
+    margin: 0.6em 0
+    padding: 12px
+    overflow: auto
+    max-width: 100%
+    background: rgba(0, 0, 0, 0.05)
+    border-radius: 8px
+    font-size: 0.88em
+    code
+      background: none
+      padding: 0
+  hr
+    margin: 0.75em 0
+    border: none
+    border-top: 1px solid rgba(0, 0, 0, 0.1)
+  a
+    color: #1976d2
+    text-decoration: underline
+  h1, h2, h3, h4
+    font-size: 1em
+    font-weight: 600
+    margin: 0.65em 0 0.35em
+    line-height: 1.35
+    &:first-child
+      margin-top: 0
+  blockquote
+    margin: 0.5em 0
+    padding-left: 0.75em
+    border-left: 3px solid rgba(0, 0, 0, 0.12)
+    color: rgba(0, 0, 0, 0.65)
+
+.chat-composer
+  flex-shrink: 0
+  width: 100%
+  min-width: 0
+  box-sizing: border-box
+  background: #fff
+  border-top: 1px solid rgba(0, 0, 0, 0.06)
+
+.chat-composer-inner
+  width: 100%
+  max-width: none
+  gap: 0 8px
+  // 输入区（附件+文本）与发送按钮之间留白由 gap 控制；field-wrap 吃掉剩余宽度
+  .chat-composer-field-wrap
+    min-width: 0
+    flex: 1 1 0%
+
+// 附件 + 输入框：单一边框连成一体（内部无边线重叠）
+.chat-composer-field-wrap
+  border: 1px solid rgba(0, 0, 0, 0.24)
+  border-radius: 12px
+  background: #fff
+  box-sizing: border-box
+  overflow: hidden
+  transition: border-color 0.18s ease, box-shadow 0.18s ease
+  &:focus-within
+    border-color: var(--q-primary)
+    box-shadow: 0 0 0 1px var(--q-primary)
+
+.body--dark .chat-composer-field-wrap
+  border-color: rgba(255, 255, 255, 0.28)
+  background: rgba(255, 255, 255, 0.04)
+  &:focus-within
+    border-color: var(--q-primary)
+    box-shadow: 0 0 0 1px var(--q-primary)
+
+.chat-file-input-hidden
+  position: fixed
+  left: -9999px
+  width: 1px
+  height: 1px
+  opacity: 0
+
+.chat-pending-image
+  max-width: 100%
+  min-width: 0
+
+.chat-pending-image-card
+  padding: 10px
+  border-radius: 10px
+  border: 1px solid rgba(0, 0, 0, 0.08)
+  background: rgba(0, 0, 0, 0.02)
+  max-width: 100%
+  min-width: 0
+  box-sizing: border-box
+
+// 不用 row + q-col-gutter：与自定义子节点混用时易出现子项宽度为 0，缩略图「看不见」
+.chat-pending-thumbs
+  display: flex
+  flex-wrap: wrap
+  gap: 10px
+  width: 100%
+  min-width: 0
+  box-sizing: border-box
+
+.chat-pending-thumb-wrap
+  position: relative
+  flex-shrink: 0
+  width: 120px
+  height: 120px
+  border-radius: 8px
+  overflow: hidden
+  box-sizing: border-box
+  background: rgba(0, 0, 0, 0.04)
+  border: 1px solid rgba(0, 0, 0, 0.08)
+
+.chat-pending-thumb-cell
+  flex: 0 0 auto
+
+.chat-pending-thumb-remove
+  position: absolute
+  top: 4px
+  right: 4px
+  z-index: 2
+  background: rgba(0, 0, 0, 0.45) !important
+  &:hover
+    background: rgba(0, 0, 0, 0.6) !important
+
+.chat-pending-thumb
+  display: block
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  border: none
+  border-radius: 0
+  object-fit: contain
+  object-position: center
+  vertical-align: top
+  background: transparent
+
+.body--dark .chat-pending-thumb-wrap
+  border-color: rgba(255, 255, 255, 0.12)
+  background: rgba(255, 255, 255, 0.04)
+
+.chat-pending-thumb--zoom
+  cursor: zoom-in
+
+.chat-pending-files-card
+  padding: 10px
+  border-radius: 10px
+  border: 1px solid rgba(0, 0, 0, 0.08)
+  background: rgba(0, 0, 0, 0.02)
+  max-width: 100%
+  box-sizing: border-box
+
+.chat-pending-file-icon
+  flex-shrink: 0
+
+.chat-bubble-img-wrap
+  position: relative
+  display: block
+  flex: 0 0 auto
+  width: min(280px, 100%)
+  max-width: 100%
+  box-sizing: border-box
+
+.chat-bubble-img--zoom
+  cursor: zoom-in
+
+.chat-bubble-user-images
+  width: 100%
+  max-width: 100%
+
+// 气泡内图片：原生 img，避免 QImg 比例盒在窄父级下宽度为 0
+.chat-bubble-img-display
+  display: block
+  width: 100%
+  max-width: 100%
+  height: auto
+  max-height: 240px
+  object-fit: contain
+  object-position: left top
+  border-radius: 8px
+  vertical-align: top
+  background: rgba(0, 0, 0, 0.04)
+  border: 1px solid rgba(0, 0, 0, 0.08)
+
+.body--dark .chat-bubble-img-display
+  background: rgba(255, 255, 255, 0.06)
+  border-color: rgba(255, 255, 255, 0.12)
+
+// 独立使用时的圆角（当前聊天框用 field-wrap 包一层，由壳裁切）
+.chat-input:not(.chat-input-with-attach)
+  .q-field__control
+    border-radius: 12px
+
+// 与输入框同壳时的左侧附件列
+.chat-composer-attach
+  align-self: stretch
+  display: flex
+  align-items: center
+  padding: 6px 4px 6px 8px
+  border-right: 1px solid rgba(0, 0, 0, 0.12)
+  box-sizing: border-box
+  background: transparent
+  position: relative
+  z-index: 1
+
+.body--dark .chat-composer-attach
+  border-right-color: rgba(255, 255, 255, 0.12)
+
+// 与附件列同排 stretch 时，若发送区比单行 textarea 高，整块 q-input 会被拉高而 textarea 仍按内容高度顶对齐，字会显得「贴顶」
+.chat-composer-field-wrap > .chat-input.chat-input-with-attach
+  align-self: center
+
+.chat-input-with-attach
+  &.q-field--borderless .q-field__control
+    border-radius: 0
+    box-shadow: none
+    background: transparent
+  .q-field__native
+    // 单行时与 min-height 对齐：上下对称，避免首行在可视框里偏上
+    padding-top: 11px
+    padding-bottom: 11px
+    padding-left: 4px
+    padding-right: 12px
+    line-height: 22px
+    min-height: 44px
+    box-sizing: border-box
+
+// 输入框左侧：原生 file 覆盖在图标上
+.chat-composer-prepend
+  gap: 4px
+  padding-right: 2px
+
+.chat-attach-slot
+  width: 40px
+  height: 40px
+  min-width: 40px
+  min-height: 40px
+  flex-shrink: 0
+  display: flex
+  align-items: center
+  justify-content: center
+
+.chat-attach-under
+  pointer-events: none
+
+.chat-attach-native
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  opacity: 0.01
+  cursor: pointer
+  z-index: 3
+  font-size: 0
+  pointer-events: auto
+
+// 与 flex 子项配合 min-height:0，避免个别布局下子项撑破；长页滚动主要依赖视口（html 未禁纵向）
+.main-layout-page-container
+  flex: 1 1 auto
+  min-height: 0
+
+.q-page-container
+  overflow-x: hidden !important
+  // 有界高度时仍可滚；无界时与视口滚动并存不冲突
+  overflow-y: auto !important
+
+.q-drawer
+  overflow: visible !important
+
+// MCP 编辑弹窗：使用说明文本框（略加高，可拖拽 resize）
+.mcp-usage-hint-input
+  textarea.q-field__native
+    min-height: 220px
+    resize: vertical
